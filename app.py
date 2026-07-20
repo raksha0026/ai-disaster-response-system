@@ -1,7 +1,7 @@
-@ -0,0 +1,78 @@
 # AI Disaster Response & Resource Management System
 
 incidents = []
+
 
 def report_incident():
     print("\n--- Report Disaster ---")
@@ -19,6 +19,7 @@ def report_incident():
     incidents.append(incident)
     print("\nIncident reported successfully!")
 
+
 def view_incidents():
     print("\n--- Incident List ---")
 
@@ -33,6 +34,7 @@ def view_incidents():
         print(f"Severity : {incident['Severity']}")
         print(f"Status   : {incident['Status']}")
 
+
 def allocate_resources():
     if len(incidents) == 0:
         print("\nNo incidents available.")
@@ -44,14 +46,19 @@ def allocate_resources():
         choice = int(input("\nEnter Incident Number: ")) - 1
 
         if 0 <= choice < len(incidents):
-            resource = input("Assign Resource (Ambulance/Fire Team/Police/Medical Team): ")
+            resource = input(
+                "Assign Resource (Ambulance/Fire Team/Police/Medical Team): "
+            )
+
             incidents[choice]["Status"] = f"Resource Assigned: {resource}"
             print("\nResource allocated successfully.")
+
         else:
             print("Invalid incident number.")
 
     except ValueError:
         print("Please enter a valid number.")
+
 
 def main():
     while True:
@@ -65,15 +72,20 @@ def main():
 
         if choice == "1":
             report_incident()
+
         elif choice == "2":
             view_incidents()
+
         elif choice == "3":
             allocate_resources()
+
         elif choice == "4":
             print("\nThank you for using the system.")
             break
+
         else:
             print("Invalid choice.")
+
 
 if __name__ == "__main__":
     main()
